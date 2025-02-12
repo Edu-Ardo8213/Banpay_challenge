@@ -4,30 +4,38 @@ services:
   web:
     build: .
     container_name: django_app
-    command: gunicorn --bind 0.0.0.0:8000 config.wsgi:application
+    command: /entrypoint.sh
     volumes:
       - .:/app
-      - static_volume:/app/static  # Volumen para archivos estáticos
+      - static_volume:/app/staticfiles  # Volumen para archivos estáticos
     ports:
       - "8000:8000"
     depends_on:
-      - mongo
+      - db
     environment:
-      - MONGO_URI=mongodb://mongo:27017/djangodb
+      - POSTGRES_DB=djangodb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
       - DJANGO_SUPERUSER_USERNAME=admin
       - DJANGO_SUPERUSER_EMAIL=admin@example.com
       - DJANGO_SUPERUSER_PASSWORD=admin123
     restart: always
 
-  mongo:
-    image: mongo:6.0
-    container_name: mongodb
+  db:
+    image: postgres:15
+    container_name: postgres_db
     restart: always
+    environment:
+      POSTGRES_DB: djangodb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     ports:
-      - "27017:27017"
+      - "5432:5432"
     volumes:
-      - mongodb_data:/data/db
+      - postgres_data:/var/lib/postgresql/data
 
 volumes:
-  mongodb_data:
-  static_volume:
+  postgres_data:
+  static_volume:  # Volumen para archivos estáticos

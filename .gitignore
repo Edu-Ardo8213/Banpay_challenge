@@ -5,3 +5,8 @@ venv/
 
 # Eliminar cache del test
 .pytest_cache/
+
+# Ignorar archivos estaticos
+staticfiles/
+static/
+

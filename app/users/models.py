@@ -1,13 +1,14 @@
 from django.db import models
 
+
 class User(models.Model):
     ROLE_CHOICES = [
-        ('admin', 'Admin'),
-        ('films', 'Films'),
-        ('people', 'People'),
-        ('locations', 'Locations'),
-        ('species', 'Species'),
-        ('vehicles', 'Vehicles'),
+        ("admin", "Admin"),
+        ("films", "Films"),
+        ("people", "People"),
+        ("locations", "Locations"),
+        ("species", "Species"),
+        ("vehicles", "Vehicles"),
     ]
     username = models.CharField(max_length=150, unique=True)
     role = models.CharField(max_length=20, choices=ROLE_CHOICES)

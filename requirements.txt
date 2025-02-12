@@ -11,3 +11,5 @@ pytest
 gunicorn
 djongo
 pymongo
+flake8
+black
