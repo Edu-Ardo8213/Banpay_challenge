@@ -1,0 +1,13 @@
+django==3.2
+djangorestframework
+djangorestframework-simplejwt
+psycopg2-binary
+python-dotenv
+requests
+coreapi
+drf_yasg
+pytest-django
+pytest
+gunicorn
+djongo
+pymongo

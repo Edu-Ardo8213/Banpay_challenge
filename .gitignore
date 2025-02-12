@@ -1,0 +1,7 @@
+# Ignorar el entorno virtual de Python
+venv/
+.env
+*.env
+
+# Eliminar cache del test
+.pytest_cache/
