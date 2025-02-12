@@ -100,39 +100,74 @@ Para formatear el código con Black:
 
 docker-compose exec web black .
 
-🏗️ Estructura del Proyecto
 
-/proyecto-raiz
-│── manage.py                # Script principal de Django
-│── requirements.txt         # Dependencias del proyecto
-│── Dockerfile               # Configuración de Docker
-│── docker-compose.yml       # Configuración de los contenedores
-│── entrypoint.sh            # Script de inicio de la aplicación en Docker
-│── .env                     # Variables de entorno
-│── README.md                # Documentación del proyecto
-│
-├── /config                  # Configuración global de Django
-│   ├── __init__.py          # Inicialización del módulo
-│   ├── settings.py          # Configuración de Django
-│   ├── urls.py              # Rutas principales del proyecto
-│   ├── wsgi.py              # Configuración WSGI para despliegue
-│   ├── asgi.py              # Configuración ASGI (opcional)
-│   └── __pycache__/         # Caché de Python (ignorar)
-│
-├── /app                     # Carpeta con las aplicaciones Django
-│   ├── /users               # Aplicación Django "users"
-│   │   ├── migrations/      # Migraciones de base de datos
-│   │   ├── admin.py         # Configuración del admin de Django
-│   │   ├── models.py        # Modelos de la base de datos
-│   │   ├── serializers.py   # Serializadores de DRF
-│   │   ├── views.py         # Vistas de Django
-│   │   ├── urls.py          # Rutas de la aplicación
-│   │   ├── tests.py         # Pruebas de la aplicación
-│   │   └── __init__.py      # Archivo de inicialización del módulo
-│
-├── /staticfiles             # Archivos estáticos (colectados con `collectstatic`)
-├── /mediafiles              # Archivos subidos por usuarios
-└── /venv                    # Entorno virtual de Python (si no usas Docker)
+📂 Estructura del Proyecto
+
+Este proyecto sigue una estructura modular para facilitar la escalabilidad y mantenimiento.
+
+📁 Directorios y Archivos Principales
+
+🌍 Raíz del Proyecto
+
+manage.py → Script principal de Django.
+
+requirements.txt → Dependencias del proyecto.
+
+Dockerfile → Configuración de Docker.
+
+docker-compose.yml → Configuración de los contenedores.
+
+entrypoint.sh → Script de inicio de la aplicación en Docker.
+
+.env → Variables de entorno.
+
+README.md → Documentación del proyecto.
+
+⚙️ Configuración Global (config/)
+
+config/settings.py → Configuración principal de Django.
+
+config/urls.py → Definición de rutas principales del proyecto.
+
+config/wsgi.py → Configuración WSGI para despliegue.
+
+config/asgi.py → Configuración ASGI (opcional para WebSockets).
+
+config/__init__.py → Archivo de inicialización del módulo.
+
+🛠️ Aplicaciones (app/)
+
+📌 Aplicación de Usuarios (users/)
+
+users/migrations/ → Migraciones de base de datos.
+
+users/admin.py → Configuración del panel de administración.
+
+users/models.py → Modelos de la base de datos.
+
+users/serializers.py → Serializadores para DRF.
+
+users/views.py → Lógica de negocio y endpoints.
+
+users/urls.py → Definición de rutas de la aplicación.
+
+users/tests.py → Pruebas unitarias de la aplicación.
+
+users/__init__.py → Archivo de inicialización del módulo.
+
+🎨 Archivos Estáticos y Medios
+
+staticfiles/ → Archivos estáticos (colocados con collectstatic).
+
+mediafiles/ → Archivos subidos por los usuarios.
+
+🏗️ Entorno Virtual (Opcional)
+
+venv/ → Entorno virtual de Python (si no usas Docker).
+
+📌 Esta estructura permite una organización clara y facilita el mantenimiento del proyecto. 🚀
+
+
 
 
 📝 Notas Adicionales
