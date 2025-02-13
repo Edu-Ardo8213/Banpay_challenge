@@ -55,8 +55,13 @@ docker-compose up --build -d
 
 4️⃣ Acceder a la Aplicación
 
-📌 Swagger UI: http://127.0.0.1:8000/swagger/
-📌 Admin Django: http://127.0.0.1:8000/admin/
+local
+📌 Swagger UI: http://127.0.0.1/swagger/
+📌 Admin Django: http://127.0.0.1/admin/
+
+produccion
+📌 Swagger UI: http://3.21.21.6/swagger/
+📌 Admin Django: http://3.21.21.6/admin/
 
 📜 Endpoints Disponibles
 

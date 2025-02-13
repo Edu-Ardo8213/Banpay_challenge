@@ -7,9 +7,10 @@ services:
     command: /entrypoint.sh
     volumes:
       - .:/app
-      - static_volume:/app/staticfiles  # Volumen para archivos estáticos
-    ports:
-      - "8000:8000"
+      - static_volume:/app/staticfiles
+      - media_volume:/app/mediafiles
+    expose:
+      - "8000"
     depends_on:
       - db
     environment:
@@ -36,6 +37,19 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - static_volume:/app/staticfiles
+      - media_volume:/app/mediafiles
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+
 volumes:
   postgres_data:
-  static_volume:  # Volumen para archivos estáticos
+  static_volume:
+  media_volume:

@@ -29,7 +29,7 @@ SECRET_KEY = "django-insecure-+5h3bus^8e16g!b3d3q2nk(t%o=3!kyj-^=_gi7qo7y6q1bh!x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -156,8 +156,8 @@ SWAGGER_SETTINGS = {
 
 # Configuración de archivos estáticos
 STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 # Servir archivos en producción (solo si no usas Nginx)
 MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
