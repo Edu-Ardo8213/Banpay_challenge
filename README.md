@@ -1,44 +1,46 @@
-🚀 API de Banpay Challange con Django, PostgreSQL y Docker
+# 🚀 API de Banpay Challenge con Django, PostgreSQL, Docker y AWS EC2
 
 Este proyecto es una API REST para la gestión de usuarios con autenticación JWT y permisos según roles. Los usuarios pueden consultar datos desde la API de Studio Ghibli según su rol.
 
-📌 Características
+---
 
-✅ API REST con Django Rest Framework (DRF)
-✅ Autenticación con JWT usando djangorestframework-simplejwt
-✅ Base de datos PostgreSQL
-✅ Contenedores Docker con docker-compose
-✅ Documentación automática con Swagger
-✅ Manejo de archivos estáticos con collectstatic
-✅ Integración con la API de Studio Ghibli
+## 📌 Características
 
-🛠️ Tecnologías Utilizadas
+- ✅ API REST con Django Rest Framework (DRF)
+- ✅ Autenticación con JWT usando `djangorestframework-simplejwt`
+- ✅ Base de datos **PostgreSQL**
+- ✅ Contenedores Docker con **docker-compose**
+- ✅ Documentación automática con **Swagger**
+- ✅ Manejo de archivos estáticos con `collectstatic`
+- ✅ Integración con la API de **Studio Ghibli**
+- ✅ **Despliegue en AWS EC2 con Nginx y Docker**
 
-Django (Backend)
+---
 
-Django Rest Framework (DRF) (API REST)
+## 🛠️ Tecnologías Utilizadas
 
-PostgreSQL (Base de Datos)
+- **Django** (Backend)
+- **Django Rest Framework (DRF)** (API REST)
+- **PostgreSQL** (Base de Datos)
+- **Docker & Docker Compose** (Contenedores)
+- **Gunicorn** (Servidor de Aplicación)
+- **Nginx** (Proxy inverso)
+- **drf-yasg** (Swagger para documentación de API)
+- **Flake8 & Black** (Linteo de código)
 
-Docker & Docker Compose (Contenedores)
+---
 
-Gunicorn (Servidor de Aplicación)
+## 🚀 Instalación y Configuración
 
-drf-yasg (Swagger para documentación de API)
-
-Flake8 & Black (Linteo de código)
-
-🚀 Instalación y Configuración
-
-1️⃣ Clonar el Repositorio
-
+### ❶ Clonar el Repositorio
+```bash
 git clone https://github.com/Edu-Ardo8213/Banpay_challenge
-cd tu_repositorio
+cd Banpay_challenge
+```
 
-2️⃣ Crear el Archivo .env
-
-Crea un archivo .env en la raíz del proyecto y agrega:
-
+### ❷ Crear el Archivo `.env`
+Crea un archivo `.env` en la raíz del proyecto y agrega:
+```env
 # Configuración de PostgreSQL
 POSTGRES_DB=djangodb
 POSTGRES_USER=postgres
@@ -48,144 +50,114 @@ POSTGRES_PORT=5432
 
 # API de Ghibli
 API_GHIBLIAPI=https://ghibliapi.vercel.app/
+```
 
-3️⃣ Construir y Levantar los Contenedores
-
+### ❸ Construir y Levantar los Contenedores
+```bash
 docker-compose up --build -d
+```
 
-4️⃣ Acceder a la Aplicación
+### ❹ Acceder a la Aplicación
 
-local
-📌 Swagger UI: http://127.0.0.1/swagger/
-📌 Admin Django: http://127.0.0.1/admin/
+#### **💻 Entorno Local:**
+- 📀 **Swagger UI:** [http://127.0.0.1/swagger/](http://127.0.0.1/swagger/)
+- 🏢 **Admin Django:** [http://127.0.0.1/admin/](http://127.0.0.1/admin/)
 
-produccion
-📌 Swagger UI: http://3.21.21.6/swagger/
-📌 Admin Django: http://3.21.21.6/admin/
+#### **🌐 Entorno de Producción en AWS EC2:**
+- 📀 **Swagger UI:** [http://3.21.21.6/swagger/](http://3.21.21.6/swagger/)
+- 🏢 **Admin Django:** [http://3.21.21.6/admin/](http://3.21.21.6/admin/)
 
-📜 Endpoints Disponibles
+---
 
-🔐 Autenticación
+## 📚 Endpoints Disponibles
 
-POST /api/token/ → Obtener Token JWT
+### 🔒 Autenticación
+- **POST** `/api/token/` ➔ Obtener Token JWT
+- **POST** `/api/token/refresh/` ➔ Refrescar Token
 
-POST /api/token/refresh/ → Refrescar Token
+### 👤 Gestión de Usuarios
+- **GET** `/api/users/` ➔ Obtener todos los usuarios
+- **POST** `/api/users/create/` ➔ Crear usuario
+- **GET** `/api/users/{username}/` ➔ Obtener un usuario específico
+- **PUT** `/api/users/{username}/update/` ➔ Actualizar usuario
+- **DELETE** `/api/users/{username}/delete/` ➔ Eliminar usuario
 
-👤 Gestión de Usuarios
+### 🎥 API de Ghibli (según rol del usuario)
+- **GET** `/api/ghibli-data/{username}/` ➔ Obtener datos de la API de Ghibli según el rol del usuario
 
-GET /api/users/ → Obtener todos los usuarios
+---
 
-POST /api/users/create/ → Crear usuario
-
-GET /api/users/{username}/ → Obtener un usuario específico
-
-PUT /api/users/{username}/update/ → Actualizar usuario
-
-DELETE /api/users/{username}/delete/ → Eliminar usuario
-
-🎥 API de Ghibli (según rol del usuario)
-
-GET /api/ghibli-data/{username}/ → Obtener datos de la API de Ghibli según el rol del usuario
-
-🛠️ Testing
-
-Para ejecutar los tests, usa:
-
+## 🛠️ Testing
+Ejecuta los tests con:
+```bash
 docker-compose exec web pytest
+```
 
-🧹 Linteo de Código
+---
 
-1️⃣ Ejecutar Linteo Manualmente
+## 🤖 Linteo de Código
 
-Para verificar el código con Flake8:
+### ❶ Ejecutar Linteo Manualmente
 
+Para verificar el código con **Flake8**:
+```bash
 docker-compose exec web flake8
+```
 
-Para formatear el código con Black:
-
+Para formatear el código con **Black**:
+```bash
 docker-compose exec web black .
+```
 
+---
 
-📂 Estructura del Proyecto
+## 📂 Estructura del Proyecto
 
-Este proyecto sigue una estructura modular para facilitar la escalabilidad y mantenimiento.
+```plaintext
+Banpay_challenge/
+│── manage.py                     # Script principal de Django
+│── requirements.txt               # Dependencias del proyecto
+│── Dockerfile                     # Configuración de Docker
+│── docker-compose.yml              # Configuración de los contenedores
+│── entrypoint.sh                   # Script de inicio en Docker
+│── .env                            # Variables de entorno
+│── README.md                       # Documentación del proyecto
+│
+├── config/                         # Configuración global de Django
+│   ├── settings.py                 # Configuración principal
+│   ├── urls.py                     # Rutas principales
+│   ├── wsgi.py                     # Configuración WSGI
+│   ├── asgi.py                     # Configuración ASGI
+│
+├── app/                            # Aplicaciones Django
+│   ├── users/                      # Aplicación de usuarios
+│   │   ├── models.py               # Modelos de la BD
+│   │   ├── serializers.py          # Serializadores
+│   │   ├── views.py                # Lógica de negocio
+│   │   ├── urls.py                 # Rutas de la app
+│   │   ├── tests.py                # Pruebas
+│   │
+├── staticfiles/                    # Archivos estáticos (colocados con collectstatic)
+├── mediafiles/                      # Archivos subidos por usuarios
+├── venv/                            # Entorno virtual de Python (si no usas Docker)
+```
 
-📁 Directorios y Archivos Principales
+---
 
-🌍 Raíz del Proyecto
+## 📘 Notas Adicionales
 
-manage.py → Script principal de Django.
-
-requirements.txt → Dependencias del proyecto.
-
-Dockerfile → Configuración de Docker.
-
-docker-compose.yml → Configuración de los contenedores.
-
-entrypoint.sh → Script de inicio de la aplicación en Docker.
-
-.env → Variables de entorno.
-
-README.md → Documentación del proyecto.
-
-⚙️ Configuración Global (config/)
-
-config/settings.py → Configuración principal de Django.
-
-config/urls.py → Definición de rutas principales del proyecto.
-
-config/wsgi.py → Configuración WSGI para despliegue.
-
-config/asgi.py → Configuración ASGI (opcional para WebSockets).
-
-config/__init__.py → Archivo de inicialización del módulo.
-
-🛠️ Aplicaciones (app/)
-
-📌 Aplicación de Usuarios (users/)
-
-users/migrations/ → Migraciones de base de datos.
-
-users/admin.py → Configuración del panel de administración.
-
-users/models.py → Modelos de la base de datos.
-
-users/serializers.py → Serializadores para DRF.
-
-users/views.py → Lógica de negocio y endpoints.
-
-users/urls.py → Definición de rutas de la aplicación.
-
-users/tests.py → Pruebas unitarias de la aplicación.
-
-users/__init__.py → Archivo de inicialización del módulo.
-
-🎨 Archivos Estáticos y Medios
-
-staticfiles/ → Archivos estáticos (colocados con collectstatic).
-
-mediafiles/ → Archivos subidos por los usuarios.
-
-🏗️ Entorno Virtual (Opcional)
-
-venv/ → Entorno virtual de Python (si no usas Docker).
-
-📌 Esta estructura permite una organización clara y facilita el mantenimiento del proyecto. 🚀
-
-
-
-
-📝 Notas Adicionales
-
-Si hay errores con archivos estáticos, ejecutar:
-
+Si hay errores con archivos estáticos, ejecuta:
+```bash
 docker-compose exec web python manage.py collectstatic --noinput
+```
 
 Para reiniciar los contenedores completamente:
-
+```bash
 docker-compose down -v && docker-compose up --build -d
+```
 
-📜 Licencia
+---
 
-MIT License © 2025 - Tu Eduardo Daniel Cortés Moreno 
+## 📝 Licencia
+MIT License © 2025 - Eduardo Daniel Cortés Moreno
 
